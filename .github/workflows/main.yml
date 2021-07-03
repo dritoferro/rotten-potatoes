@@ -40,6 +40,12 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.K8S_CONFIG }}
+      - name: Deploy Namespace
+        uses: Azure/k8s-deploy@v1
+        with:
+          namespace: tagliaferrodev
+          manifests: |
+            k8s/namespace.yaml
       - name: Deploy Mongo
         uses: Azure/k8s-deploy@v1
         with:
